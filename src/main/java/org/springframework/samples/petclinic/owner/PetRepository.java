@@ -15,8 +15,10 @@
  */
 package org.springframework.samples.petclinic.owner;
 
+import java.util.Collection;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +34,10 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Michael Isvy
  */
 public interface PetRepository extends Repository<Pet, Integer> {
+
+    @Transactional(readOnly = true)
+        //@Cacheable("pets")
+    Collection<Pet> findAll() throws DataAccessException;
 
     /**
      * Retrieve all {@link PetType}s from the data store.

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'pets')}">
+
+<body>
+
+<h2>Pets</h2>
+
+<table id="pets" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Birth Date</th>
+        <th>Type</th>
+        <th>Owner</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pet : ${pets.petList}">
+        <td th:text="${pet.name}"></td>
+        <td th:text="${pet.birthDate.toString()}"></td>
+        <td th:text="${pet.type.name}"></td>
+        <td th:text="${pet.owner.firstName + pet.owner.lastName}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
+

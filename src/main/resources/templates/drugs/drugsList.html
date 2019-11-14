@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'drugs')}">
+
+<body>
+
+<h2>Drugs</h2>
+
+<table id="owners" class="table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 150px;">Name</th>
+        <th style="width: 200px;">Animal Type</th>
+        <th>Batch Number</th>
+        <th style="width: 120px">Date of expiry</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="drug : ${drugs}">
+        <td>
+            <a th:href="@{/drugs/__${drug.id}__}" th:text="${drug.name}"/></a>
+        </td>
+        <td th:text="${drug.animalType}"/>
+        <td th:text="${drug.batchNr}"/>
+        <td th:text="${drug.dateLast}"/>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
